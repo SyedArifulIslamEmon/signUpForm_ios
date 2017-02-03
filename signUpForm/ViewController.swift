@@ -1,29 +1,18 @@
-//
-//  ViewController.swift
-//  signUpForm
-//
-//  Created by Sierra 4 on 31/01/17.
-//  Copyright © 2017 codebrew. All rights reserved.
-//
-
 import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
   
-  
     @IBOutlet weak var tf_first_name: UITextField!
     
-    
     @IBOutlet weak var tf_last_name: UITextField!
+    
     @IBOutlet weak var tf_email_id: UITextField!
     
     @IBOutlet weak var tf_password: UITextField!
     
     @IBOutlet weak var tf_confirm_password: UITextField!
     
-    
     @IBOutlet weak var segment_gender: UISegmentedControl!
-    
     
     @IBOutlet weak var tf_date_of_birth:UITextField!
     
@@ -31,94 +20,32 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var tf_about_me: UITextField!
     
-    
-    
-
-    
-    
     @IBOutlet weak var tf_phone_number: UITextField!
 
-   
-    
-    
     @IBOutlet weak var btn_sign_up: UIButton!
-    
-    
-    
     
     @IBOutlet var text_field: [UITextField]!
     
+    var message1 = ""
     
-    
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
 
-        self.tf_first_name.layer.cornerRadius=8
-        self.tf_first_name.layer.masksToBounds=true
-        self.tf_first_name.layer.borderColor=UIColor.gray.cgColor
-        self.tf_first_name.layer.borderWidth=1
-        tf_first_name.setValue(UIColor.init(colorLiteralRed: 80/255, green: 80/255, blue: 80/255, alpha: 1.0), forKeyPath: "_placeholderLabel.textColor")
-        
-        self.tf_last_name.layer.cornerRadius=8
-        self.tf_last_name.layer.masksToBounds=true
-        self.tf_last_name.layer.borderColor=UIColor.gray.cgColor
-        self.tf_last_name.layer.borderWidth=1
-        tf_last_name.setValue(UIColor.init(colorLiteralRed: 80/255, green: 80/255, blue: 80/255, alpha: 1.0), forKeyPath: "_placeholderLabel.textColor")
-        
-        self.tf_email_id.layer.cornerRadius=8
-        self.tf_email_id.layer.masksToBounds=true
-        self.tf_email_id.layer.borderColor=UIColor.gray.cgColor
-        self.tf_email_id.layer.borderWidth=1
-        tf_email_id.setValue(UIColor.init(colorLiteralRed: 80/255, green: 80/255, blue: 80/255, alpha: 1.0), forKeyPath: "_placeholderLabel.textColor")
-        
-        self.tf_password.layer.cornerRadius=8
-        self.tf_password.layer.masksToBounds=true
-        self.tf_password.layer.borderColor=UIColor.gray.cgColor
-        self.tf_password.layer.borderWidth=1
-        tf_password.setValue(UIColor.init(colorLiteralRed: 80/255, green: 80/255, blue: 80/255, alpha: 1.0), forKeyPath: "_placeholderLabel.textColor")
-        
-        self.tf_confirm_password.layer.cornerRadius=8
-        self.tf_confirm_password.layer.masksToBounds=true
-        self.tf_confirm_password.layer.borderColor=UIColor.gray.cgColor
-        self.tf_confirm_password.layer.borderWidth=1
-        tf_confirm_password.setValue(UIColor.init(colorLiteralRed: 80/255, green: 80/255, blue: 80/255, alpha: 1.0), forKeyPath: "_placeholderLabel.textColor")
-        
-        self.segment_gender.layer.cornerRadius=8
-        self.segment_gender.layer.masksToBounds=true
-        self.segment_gender.layer.borderColor=UIColor.gray.cgColor
-        self.segment_gender.layer.borderWidth=1
-        
-        
-        self.tf_date_of_birth.layer.cornerRadius=8
-        self.tf_date_of_birth.layer.masksToBounds=true
-        self.tf_date_of_birth.layer.borderColor=UIColor.gray.cgColor
-        self.tf_date_of_birth.layer.borderWidth=1
-        tf_date_of_birth.setValue(UIColor.init(colorLiteralRed: 80/255, green: 80/255, blue: 80/255, alpha: 1.0), forKeyPath: "_placeholderLabel.textColor")
-        
-        self.tf_about_me.layer.cornerRadius=8
-        self.tf_about_me.layer.masksToBounds=true
-        self.tf_about_me.layer.borderColor=UIColor.gray.cgColor
-        self.tf_about_me.layer.borderWidth=1
-        tf_about_me.setValue(UIColor.init(colorLiteralRed: 80/255, green: 80/255, blue: 80/255, alpha: 1.0), forKeyPath: "_placeholderLabel.textColor")
-        
-        
-        self.tf_phone_number.layer.cornerRadius=8
-        self.tf_phone_number.layer.masksToBounds=true
-        self.tf_phone_number.layer.borderColor=UIColor.gray.cgColor
-        self.tf_phone_number.layer.borderWidth=1
-        tf_phone_number.setValue(UIColor.init(colorLiteralRed: 80/255, green: 80/255, blue: 80/255, alpha: 1.0), forKeyPath: "_placeholderLabel.textColor")
-        
-        
+        for textField in text_field{
+            
+            textField.layer.cornerRadius=8
+            textField.layer.masksToBounds=true
+            textField.layer.borderColor=UIColor.gray.cgColor
+            textField.layer.borderWidth=1
+            textField.setValue(UIColor.init(colorLiteralRed: 80/255, green: 80/255, blue: 80/255, alpha: 1.0), forKeyPath: "_placeholderLabel.textColor")
+            
+        }
         
         self.btn_sign_up.layer.cornerRadius=8
         self.btn_sign_up.layer.masksToBounds=true
         self.btn_sign_up.layer.borderColor=UIColor.gray.cgColor
         self.btn_sign_up.layer.borderWidth=1
-        
         
         tf_first_name.delegate = self
         tf_last_name.delegate = self
@@ -128,66 +55,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         tf_date_of_birth.delegate = self
         tf_about_me.delegate = self
         tf_phone_number.delegate = self
-
         
         create_date_picker()
-        
-        
-        
-        //tf_first_name.addTarget(self, action: Selector("textFieldDidChange:"), for: UIControlEvents.editingChanged)
+    }
 
-        /*textFieldDidChange(textField: tf_first_name)
-        textFieldDidChange(textField: tf_last_name)
-        textFieldDidChange(textField: tf_email_id)
-        textFieldDidChange(textField: tf_password)
-        textFieldDidChange(textField: tf_confirm_password)
-        textFieldDidChange(textField: tf_date_of_birth)
-        textFieldDidChange(textField: tf_about_me)
-        textFieldDidChange(textField: tf_phone_number)*/
-        
-        
-        //textFieldDidChange()
-        
-        //NotificationCenter.default.addObserver(self, selector: Selector(("keyboardWillShow:")), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
-        //NotificationCenter.default.addObserver(self, selector: Selector(("keyboardWillHide:")), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
-        
-        //NotificationCenter.default.addObserver(self, selector: Selector(("keyboardWillShow:")), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        //NotificationCenter.default.addObserver(self, selector: Selector(("keyboardWillHide:")), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
-        
-        
-    }
-    /*
-    func keyboardWillShow(sender: NSNotification) {
-        self.view.frame.origin.y = -150
-    }
-    
-    func keyboardWillHide(sender: NSNotification) {
-        self.view.frame.origin.y = 0
-    }
-    */
-    
-   
-    /*func keyboardWillShow(notification: NSNotification) {
-        
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
-        
-    }
-    
-    func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y += keyboardSize.height
-            }
-        }
-    }*/
-    
-    
-    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         btn_sign_up.isEnabled = true
         animateViewMoving(up: true, moveValue: 100)
@@ -208,150 +79,274 @@ class ViewController: UIViewController, UITextFieldDelegate {
         UIView.commitAnimations()
     }
 
-    
     func create_date_picker(){
-        
-        
         date_picker.datePickerMode = .date
-        
         let tool_bar = UIToolbar()
         tool_bar.sizeToFit()
-        
-        
         let done_button = UIBarButtonItem(barButtonSystemItem:.done, target: nil, action: #selector(done_pressed))
         tool_bar.setItems([done_button], animated: false)
-        
         tf_date_of_birth.inputAccessoryView = tool_bar
-    
-        
         tf_date_of_birth.inputView = date_picker
     }
-    
     
     func done_pressed(){
         let date_formatter = DateFormatter()
         date_formatter.dateStyle = .short
         date_formatter.timeStyle = .none
-    
         tf_date_of_birth.text = date_formatter.string(from: date_picker.date)
         self.view.endEditing(true)
-    
-    
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+        
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        return false
     }
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    func isValidAlphabet(testStr: String) -> Bool {
         
+        let alphabetRegEx = "^[a-zA-Z]+$"
+        let alphabetTest = NSPredicate(format:"SELF MATCHES %@", alphabetRegEx)
+        return alphabetTest.evaluate(with: testStr)
     }
     
-    /*var is_email:Bool{
-        get {
-            let trimmed = trimmingCharacters(in: CharacterSet.whitespaces)
-            return trimmed.isEmpty
+    func isAlphabetLength(alphabet: String) -> Bool {
+        if alphabet.characters.count <= 10{
+            return true
         }
-    }
-    
-    var isAlphanumeric: Bool {
-        return !isEmpty && range(of: "[^a-zA-Z0-9]", options: .regularExpression) == nil
-    }
-    
-    var isValidPassword: Bool {
-        do {
-            let regex = try NSRegularExpression(pattern: "^[a-zA-Z_0-9\\-_,;.:#+*?=!§$%&/()@]+$", options: .caseInsensitive)
-            if(regex.firstMatch(in: self, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.characters.count)) != nil){
-                
-                if(self.characters.count>=6 && self.characters.count<=20){
-                    return true
-                }else{
-                    return false
-                }
-            }else{
-                return false
-            }
-        } catch {
+        else{
             return false
         }
-    }*/
+    }
     
+    func isValidEmail(testStr: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
+    }
     
+    func isPasswordSame(password: String , confirmPassword : String) -> Bool {
+        if password == confirmPassword{
+            return true
+        }
+        else{
+            return false
+        }
+    }
     
-       /*name2.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
-    name3.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
-    name4.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)*/
+    func isPwdLength(password: String , confirmPassword : String) -> Bool {
+        if password.characters.count <= 15 && confirmPassword.characters.count <= 15{
+            return true
+        }
+        else{
+            return false
+        }
+    }
     
-    
-    //func textFieldDidChange(textField: UITextField) {
-        //    }
- 
+    func isValidAboutMe(testStr: String) -> Bool {
+        let aboutMeRegEx = "[a-zA-Z][a-zA-Z ]+[a-zA-Z]$"
+        let aboutMeTest = NSPredicate(format:"SELF MATCHES %@", aboutMeRegEx)
+        return aboutMeTest.evaluate(with: testStr)
+    }
 
+    func isAboutMeLength(about_me: String) -> Bool {
+        if about_me.characters.count <= 50{
+            return true
+        }
+        else{
+            return false
+        }
+    }
+    
+    func isValidPhoneNumber(value: String) -> Bool {
+        let PHONE_REGEX = "^((\\+)|(00))[0-9]{6,14}$"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
+        let result =  phoneTest.evaluate(with: value)
+        return result
+    }
+    
+    
+    func isPhoneNumberLength(phone_number: String) -> Bool {
+        if phone_number.characters.count == 13{
+            return true
+        }
+        else{
+            return false
+        }
+    }
+    
+    func alertControllerr(_message: String){
+        
+        let  myAlertNameFailure = UIAlertController(title : "Alert" , message : message1 , preferredStyle :UIAlertControllerStyle.alert)
+        
+        let okAction = UIAlertAction(title : "OK" , style : UIAlertActionStyle.default , handler:nil)
+        
+        myAlertNameFailure.addAction(okAction)
+        self.present(myAlertNameFailure , animated : true , completion : nil)
+        
+    }
     @IBAction func btn_sign_up_action(_ sender: Any) {
         
-       /* if tf_first_name.text == "" || tf_last_name.text == "" || tf_email_id.text == "" || tf_password.text == "" || tf_confirm_password.text == "" || tf_date_of_birth.text == "" || tf_about_me.text == "" || tf_phone_number.text == "" {
-            //textField.text = "input required"
+        if tf_first_name.text == "" {
+                    
+            message1 = "First Name Required"
+            alertControllerr(_message: message1)
             btn_sign_up.isEnabled = false
-        } else {
-            btn_sign_up.isEnabled = true
-        }*/
-        /*
-        for text in self.text_field {
-            if text = "" {
+        }
+        
+        else if tf_last_name.text == "" {
+            message1 =  "Last Name Required"
+            alertControllerr(_message: message1)
+            btn_sign_up.isEnabled = false
+        }
             
-            }
-        
-        }*/
-        
-        for view in self.view.subviews as [UIView] {
-            if let text_fieldd = view as? UITextField {
-                if text_fieldd.text == "" {
-                    
-                    let alertController = UIAlertController(title: "Input required", message: "Provide input",preferredStyle: .alert)
-                    let OKAction = UIAlertAction(title: "OK", style: .default)
+        else if tf_email_id.text == "" {
+            message1 =  "Email Required"
+            alertControllerr(_message: message1)
+            btn_sign_up.isEnabled = false
+        }
+          
+        else if tf_password.text == "" {
+            message1 =  "Password Required"
+            alertControllerr(_message: message1)
+            btn_sign_up.isEnabled = false
+        }
+          
+        else if tf_confirm_password.text == "" {
+            message1 =  "Re-enter Password"
+            alertControllerr(_message: message1)
+            btn_sign_up.isEnabled = false
+        }
+            
+        else if tf_date_of_birth.text == "" {
+            message1 =  "Date_of_Birth Required"
+            alertControllerr(_message: message1)
+            btn_sign_up.isEnabled = false
+        }
+            
+        else if tf_about_me.text == "" {
+            message1 =  "About me"
+            alertControllerr(_message: message1)
+            btn_sign_up.isEnabled = false
+        }
+            
+            
+        else if tf_phone_number.text == "" {
+            message1 =  "Phone number"
+            alertControllerr(_message: message1)
+            btn_sign_up.isEnabled = false
+        }
+         
+        else{
+            if isValidAlphabet(testStr: tf_first_name.text ?? "") && isAlphabetLength(alphabet: tf_first_name.text ?? "") && isValidAlphabet(testStr: tf_last_name.text ?? "") && isAlphabetLength(alphabet: tf_last_name.text ?? "") && isValidEmail(testStr: tf_email_id.text ?? "") && isPwdLength(password: tf_password.text ?? "", confirmPassword: tf_confirm_password.text ?? "") && isPasswordSame(password: tf_password.text ?? "", confirmPassword: tf_confirm_password.text ?? "") && isValidAboutMe(testStr: tf_about_me.text ?? "") && isAboutMeLength(about_me: tf_about_me.text ?? "") &&  isValidPhoneNumber(value: tf_phone_number.text ?? "") && isPhoneNumberLength(phone_number: tf_phone_number.text ?? "")
                     {
-                        (action:UIAlertAction!) in
-                        print("you have pressed OK button");
-                    }
-                    alertController.addAction(OKAction)
                     
-                    self.present(alertController, animated: true, completion:nil)
-                    
-                    
-                    text_fieldd.text = "input required"
-                    btn_sign_up.isEnabled = false
+                btn_sign_up.isEnabled = true
+                        message1 =  "Sign Up Success"
+                        alertControllerr(_message: message1)
+                        btn_sign_up.isEnabled = false
                 }
-                else{
-                    btn_sign_up.isEnabled = true
-                    
-                    let alertController = UIAlertController(title: "Sign up success", message: "You are signed up", preferredStyle: .alert)
-                    let OKAction = UIAlertAction(title: "OK", style: .default)
-                    {
-                        (action:UIAlertAction!) in
-                        print("you have pressed OK button");
-                    }
-                    alertController.addAction(OKAction)
-                    
-                    self.present(alertController, animated: true, completion:nil)
-                    
-                            //btn_sign_up(alertController, animated: true, completion:nil)
-                    }
+                
+                
+            else if(!isValidAlphabet(testStr: tf_first_name.text ?? "")) {
+                    message1 =  "Provide valid first name"
+                    alertControllerr(_message: message1)
+                    btn_sign_up.isEnabled = false
+            }
+                
+            
+            else if(!isAlphabetLength(alphabet: tf_first_name.text ?? "")){
+                
+                message1 =  "Length of first name can't be greater than 10"
+                alertControllerr(_message: message1)
+                btn_sign_up.isEnabled = false            }
+                
+            
+            else if !isValidAlphabet(testStr: tf_last_name.text ?? ""){
+                
+                message1 =  "Provide valid last name"
+                alertControllerr(_message: message1)
+                btn_sign_up.isEnabled = false
+            }
+               
+                
+            else if !isAlphabetLength(alphabet: tf_last_name.text ?? ""){
+                
+                message1 =  "Length of last name can't be greater than 10"
+                alertControllerr(_message: message1)
+                btn_sign_up.isEnabled = false
+            }
+                
+            
+            else if !isValidEmail(testStr: tf_email_id.text ?? ""){
+                
+                message1 =  "Provide valid email"
+                alertControllerr(_message: message1)
+                btn_sign_up.isEnabled = false
+            }
+                
+                
+            else if !isPwdLength(password: tf_password.text ?? "", confirmPassword: tf_confirm_password.text ?? "") {
+                
+                message1 =  "Password can't be greater than zero"
+                alertControllerr(_message: message1)
+                btn_sign_up.isEnabled = false
+            }
+                
+            else if !isPasswordSame(password: tf_password.text ?? "", confirmPassword: tf_confirm_password.text ?? "") {
+                
+                message1 =  "Password is not same"
+                alertControllerr(_message: message1)
+                btn_sign_up.isEnabled = false
+            }
+                
+            else if !isValidAboutMe(testStr: tf_about_me.text ?? "") && isAboutMeLength(about_me: tf_about_me.text ?? ""){
+                
+                message1 =  "Provide valid details about yourself"
+                alertControllerr(_message: message1)
+                btn_sign_up.isEnabled = false
+            }
+             
+            else if !isAboutMeLength(about_me: tf_about_me.text ?? ""){
+                
+                message1 =  "About me length can't be greater than zero"
+                alertControllerr(_message: message1)
+                btn_sign_up.isEnabled = false
+            }
+               
+            else if !isValidPhoneNumber(value: tf_phone_number.text ?? ""){
+                
+                message1 =  "Provide valid phone number"
+                alertControllerr(_message: message1)
+                btn_sign_up.isEnabled = false
+            }
+            
+            else if !isPhoneNumberLength(phone_number: tf_phone_number.text ?? ""){
+                message1 =  "Phone number length should be equal to 10"
+                alertControllerr(_message: message1)
+                btn_sign_up.isEnabled = false
+            }
+                
+            else{
+                btn_sign_up.isEnabled = false
+                        
+                message1 =  "Sign Up failed"
+                alertControllerr(_message: message1)
+                
             }
         }
-
-        
-        
-
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-
 }
-
